@@ -294,8 +294,8 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:iesen/rabbitmq-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:iesen/rabbitmq-maven-plugin.git</developerConnection>
+        <connection>scm:git:https://github.com/iesen/rabbitmq-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/iesen/rabbitmq-maven-plugin.git</developerConnection>
         <url>git@github.com:iesen/rabbitmq-maven-plugin.git</url>
     </scm>
 
