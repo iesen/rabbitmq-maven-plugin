@@ -3,7 +3,7 @@
 
     <groupId>com.github.iesen</groupId>
     <artifactId>rabbitmq-maven-plugin</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>RabbitMQ Maven Plugin</name>
@@ -296,7 +296,7 @@
         <connection>scm:git:https://github.com/iesen/rabbitmq-maven-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/iesen/rabbitmq-maven-plugin.git</developerConnection>
         <url>git@github.com:iesen/rabbitmq-maven-plugin.git</url>
-      <tag>0.1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
 </project>
