@@ -2,8 +2,6 @@
 
 A maven plugin that downloads, install and configures a RabbitMQ instance within maven lifecycle
 
-###**The plugin is not yet in Maven Central, but it will soon be uploaded**
-
 ## Example Usage
 
 Below is an example configuration for the plugin. You can add exchanges, queues and their binding in the configuration section.
