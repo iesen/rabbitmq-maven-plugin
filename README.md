@@ -1,5 +1,7 @@
 #RabbitMQ Maven Plugin
 
+[![Join the chat at https://gitter.im/iesen/rabbitmq-maven-plugin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iesen/rabbitmq-maven-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A maven plugin that downloads, install and configures a RabbitMQ instance within maven lifecycle
 
 ## Example Usage
