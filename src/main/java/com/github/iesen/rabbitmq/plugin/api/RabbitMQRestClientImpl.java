@@ -75,10 +75,12 @@ public class RabbitMQRestClientImpl implements RabbitMQRestClient {
             QueueResource queueResource = new QueueResource();
             Response response = api.createQueue(queueResource, DEFAULT_VHOST, queue.getName());
             log.debug("Create queue returned: " + response.getStatus());
-            for (Binding binding : queue.getBindings()) {
-                BindingResource bindingResource = new BindingResource(binding.getRoutingKey());
-                Response bndResponse = api.createBinding(bindingResource, DEFAULT_VHOST, binding.getExchangeName(), queue.getName());
-                log.debug("Create binding returned: " + bndResponse.getStatus());
+            if(queue.getBindings()!=null) {
+                for (Binding binding : queue.getBindings()) {
+                    BindingResource bindingResource = new BindingResource(binding.getRoutingKey());
+                    Response bndResponse = api.createBinding(bindingResource, DEFAULT_VHOST, binding.getExchangeName(), queue.getName());
+                    log.debug("Create binding returned: " + bndResponse.getStatus());
+                }
             }
         }
 
