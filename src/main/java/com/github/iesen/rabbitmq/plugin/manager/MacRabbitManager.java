@@ -115,12 +115,14 @@ public class MacRabbitManager implements RabbitManager {
             log.info("Starting broker:" + processBuilder.command());
             processBuilder.environment().put("RABBITMQ_NODE_PORT", port);
             Process p = processBuilder.start();
-
             int result = p.waitFor();
             log.debug("Start result: " + result);
-            log.info("RabbitMQ Running on: " + port);
-            ProcessBuilder managementEnabler = new ProcessBuilder(RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmq-plugins", "enable", "rabbitmq_management");
-            log.debug("Enable management" + managementEnabler.command());
+            if(isRabbitRunning())
+               log.info("RabbitMQ Running on: " + port);
+            List<String> managementCommand= Lists.newArrayList(RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmq-plugins", "enable",
+               "rabbitmq_management");
+            ProcessBuilder managementEnabler = new ProcessBuilder(managementCommand);
+            log.info("Enable management" + managementEnabler.command());
             Process mgmtProcess = managementEnabler.start();
             mgmtProcess.waitFor();
         } catch (IOException | InterruptedException e) {
