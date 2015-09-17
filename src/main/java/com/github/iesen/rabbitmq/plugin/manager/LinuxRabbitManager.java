@@ -37,7 +37,7 @@ public class LinuxRabbitManager implements RabbitManager {
     @Override
     public void extractServer() throws MojoExecutionException {
         try {
-            String rabbitDownloadUrl = "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v" + RABBITMQ_VERSION +
+            String rabbitDownloadUrl = "https://www.rabbitmq.com/releases/rabbitmq-server/v" + RABBITMQ_VERSION +
                "/rabbitmq-server-generic-unix-" + RABBITMQ_VERSION + ".tar.gz";
             log.debug("Downloading rabbitmq from " + rabbitDownloadUrl);
             FileUtils.download(rabbitDownloadUrl, RABBITMQ_PARENT_DIR + File.separator + "rabbitmq-server-mac-standalone-" + RABBITMQ_VERSION + ".tar.gz");
