@@ -46,7 +46,7 @@ the settings specified in the plugin configuration.
 
 Windows and Mac OS is supported.
 
-Linux will also be supported soon.
+Linux is supported but withouth erlang support.
 
 
 
