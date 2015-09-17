@@ -18,5 +18,5 @@ public interface RabbitManager {
 
     void installErlang() throws MojoExecutionException;
 
-    boolean isErlangInstalled();
+    boolean isErlangInstalled() throws MojoExecutionException;
 }

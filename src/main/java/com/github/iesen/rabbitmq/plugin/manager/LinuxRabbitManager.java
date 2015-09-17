@@ -16,12 +16,13 @@ import java.util.List;
 
 /**
  */
-public class LinuxRabbitManager implements RabbitManager {
+public class LinuxRabbitManager extends MacRabbitManager {
 
     private static final int BUFFER = 2048;
     private final Log log;
 
     public LinuxRabbitManager(Log log) {
+        super(log);
         this.log = log;
     }
 
@@ -60,87 +61,27 @@ public class LinuxRabbitManager implements RabbitManager {
         }
     }
 
-    @Override
-    public boolean isRabbitRunning() throws MojoExecutionException {
-        try {
-            String rabbitctlPath = RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmqctl";
-            if (!(new File(rabbitctlPath).exists())) {
-                throw new MojoExecutionException("RabbitMQ has not started yet");
-            }
-            ProcessBuilder statusProcessBuilder = new ProcessBuilder(RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmqctl", "status");
-            log.info(statusProcessBuilder.command().toString());
-            Process statusProcess = statusProcessBuilder.start();
-            String statusLine;
-            StringBuilder statusResult = new StringBuilder();
-            BufferedReader inStatus = new BufferedReader(new InputStreamReader(statusProcess.getInputStream()));
-            while ((statusLine = inStatus.readLine()) != null) {
-                log.debug(statusLine);
-                statusResult.append(statusLine).append('\n');
-            }
-            inStatus.close();
-            return statusResult.toString().contains("pid");
-        } catch (IOException e) {
-            throw new MojoExecutionException("Error checking server status via rabbitmqctl", e);
-        }
-    }
-
-    @Override
-    public void stop() throws MojoExecutionException {
-        try {
-            String rabbitctlPath = RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmqctl";
-            if (!(new File(rabbitctlPath).exists())) {
-                throw new MojoExecutionException("RabbitMQ is not started");
-            }
-            ProcessBuilder statusProcessBuilder = new ProcessBuilder(rabbitctlPath, "stop");
-            Process statusProcess = statusProcessBuilder.start();
-            String line;
-            BufferedReader inStop = new BufferedReader(new InputStreamReader(statusProcess.getInputStream()));
-            while ((line = inStop.readLine()) != null) {
-                log.debug(line);
-            }
-            inStop.close();
-            statusProcess.waitFor();
-        } catch (IOException e) {
-            throw new MojoExecutionException("Error stopping server via rabbitmqctl", e);
-        } catch (InterruptedException e) {
-            throw new MojoExecutionException("Error waiting server stop", e);
-        }
-    }
-
-    @Override
-    public void start(String port, boolean detached) throws MojoExecutionException {
-        try {
-            List<String> startCommand = Lists.newArrayList(RABBITMQ_HOME + File.separator + "sbin" + File.separatorChar + "rabbitmq-server");
-            if (detached) {
-                startCommand.add("-detached");
-            }
-            ProcessBuilder processBuilder = new ProcessBuilder(startCommand);
-            log.info("Starting broker:" + processBuilder.command());
-            processBuilder.environment().put("RABBITMQ_NODE_PORT", port);
-            Process p = processBuilder.start();
-            int result = p.waitFor();
-            log.debug("Start result: " + result);
-            if(isRabbitRunning())
-               log.info("RabbitMQ Running on: " + port);
-            List<String> managementCommand= Lists.newArrayList(RABBITMQ_HOME + File.separator + "sbin" + File.separator + "rabbitmq-plugins", "enable",
-               "rabbitmq_management");
-            ProcessBuilder managementEnabler = new ProcessBuilder(managementCommand);
-            log.info("Enable management" + managementEnabler.command());
-            Process mgmtProcess = managementEnabler.start();
-            mgmtProcess.waitFor();
-        } catch (IOException | InterruptedException e) {
-            throw new MojoExecutionException("Error starting server", e);
-        }
-    }
 
     @Override
     public void installErlang() throws MojoExecutionException {
-        throw new UnsupportedOperationException("Erlang is bundled in OS X systems");
+        throw new MojoExecutionException("unsuported operating system");
     }
 
     @Override
-    public boolean isErlangInstalled() {
+    public boolean isErlangInstalled() throws MojoExecutionException {
+        ProcessBuilder permissionProcess = new ProcessBuilder("erl");
+        log.debug("Permission command " + permissionProcess.command());
+        Process permission = null;
+        try {
+            permission = permissionProcess.start();
+            permission.waitFor();
+        } catch (IOException e) {
+            throw new MojoExecutionException("Erlang is not installed", e);
+        } catch (InterruptedException e){
+            throw new MojoExecutionException("Erlang is not installed", e);
+        }
         return true;
+        //todo
     }
 
 }
