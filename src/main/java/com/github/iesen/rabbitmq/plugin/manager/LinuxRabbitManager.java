@@ -64,13 +64,13 @@ public class LinuxRabbitManager extends MacRabbitManager {
 
     @Override
     public void installErlang() throws MojoExecutionException {
-        throw new MojoExecutionException("unsuported operating system");
+        throw new MojoExecutionException("unsupported operating system");
     }
 
     @Override
     public boolean isErlangInstalled() throws MojoExecutionException {
         ProcessBuilder permissionProcess = new ProcessBuilder("erl","-version");
-        log.debug("Permission command " + permissionProcess.command());
+        log.debug("Erlang version command " + permissionProcess.command());
         Process permission = null;
         try {
             permission = permissionProcess.start();
@@ -81,7 +81,6 @@ public class LinuxRabbitManager extends MacRabbitManager {
             throw new MojoExecutionException("Erlang is not installed", e);
         }
         return true;
-        //todo
     }
 
 }
