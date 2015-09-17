@@ -26,6 +26,13 @@
             <url>http://esenibrahim-en.blogspot.com.tr/</url>
             <timezone>Europe/Istanbul</timezone>
         </developer>
+        <developer>
+            <name>Paul Horvath</name>
+            <email>paul.horvath@ooyala.com</email>
+            <organization>Ooyala</organization>
+            <organizationUrl>www.ooyala.com</organizationUrl>
+            <timezone>Europe/Stockholm</timezone>
+        </developer>
     </developers>
 
     <profiles>
@@ -286,10 +293,6 @@
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <scm>
