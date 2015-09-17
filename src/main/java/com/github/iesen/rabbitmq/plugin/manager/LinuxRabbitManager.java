@@ -69,7 +69,7 @@ public class LinuxRabbitManager extends MacRabbitManager {
 
     @Override
     public boolean isErlangInstalled() throws MojoExecutionException {
-        ProcessBuilder permissionProcess = new ProcessBuilder("erl");
+        ProcessBuilder permissionProcess = new ProcessBuilder("erl","-version");
         log.debug("Permission command " + permissionProcess.command());
         Process permission = null;
         try {
