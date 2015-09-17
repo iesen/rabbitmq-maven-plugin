@@ -136,7 +136,7 @@ public class MacRabbitManager implements RabbitManager {
     }
 
     @Override
-    public boolean isErlangInstalled() {
+    public boolean isErlangInstalled() throws MojoExecutionException {
         return true;
     }
 
