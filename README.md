@@ -51,3 +51,7 @@ Linux will also be supported soon.
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/iesen/rabbitmq-maven-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
