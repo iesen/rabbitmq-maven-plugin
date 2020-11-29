@@ -256,7 +256,7 @@
     </dependencies>
 
     <properties>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <maven.verifier.version>1.5</maven.verifier.version>
         <powermock.version>1.6.1</powermock.version>
         <maven.plugin.api.version>3.2.5</maven.plugin.api.version>
