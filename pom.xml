@@ -3,7 +3,7 @@
 
     <groupId>com.github.iesen</groupId>
     <artifactId>rabbitmq-maven-plugin</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.2</version>
     <packaging>maven-plugin</packaging>
 
     <name>RabbitMQ Maven Plugin</name>
@@ -25,6 +25,13 @@
             <email>ibrahmesen@gmail.com</email>
             <url>http://esenibrahim-en.blogspot.com.tr/</url>
             <timezone>Europe/Istanbul</timezone>
+        </developer>
+        <developer>
+            <name>Paul Horvath</name>
+            <email>paul.horvath@ooyala.com</email>
+            <organization>Ooyala</organization>
+            <organizationUrl>www.ooyala.com</organizationUrl>
+            <timezone>Europe/Stockholm</timezone>
         </developer>
     </developers>
 
