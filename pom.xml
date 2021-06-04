@@ -266,7 +266,7 @@
         <commons.compress.version>1.19</commons.compress.version>
         <commons.lang.version>3.3.2</commons.lang.version>
         <guava.version>18.0</guava.version>
-        <http.client.version>4.4</http.client.version>
+        <http.client.version>4.5.13</http.client.version>
         <retrofit.version>1.9.0</retrofit.version>
         <!-- Plugins -->
         <maven.plugin.plugin.version>3.4</maven.plugin.plugin.version>
